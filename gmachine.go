@@ -11,6 +11,10 @@ const (
 	OpHALT = 0
 	//OpNOOP does nothing.
 	OpNOOP = 1
+	//OpINCA adds one to.
+	OpINCA = 2
+	//OpDECA subtracts one from.
+	OpDECA = 3
 )
 
 //GMachine is a state-machine representing a virtual CPU.
@@ -46,6 +50,10 @@ func (g *GMachine) Run() {
 			return
 		case OpNOOP:
 			//We do nothing and increment the program counter (PC).
+			g.P++
+		case OpINCA:
+			//We add one to the value held by A,then increment the program counter.(PC)
+			g.A++
 			g.P++
 		}
 	}
