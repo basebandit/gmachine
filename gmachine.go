@@ -5,6 +5,14 @@ package gmachine
 // allocated to a new G-machine by default.
 const DefaultMemSize = 1024
 
+//G-Machine instruction-set with their respective OPCodes.
+const (
+	//OpHALT stops current execution.
+	OpHALT = 0
+	//OpNOOP does nothing.
+	OpNOOP = 1
+)
+
 //GMachine is a state-machine representing a virtual CPU.
 type GMachine struct {
 	//P is a 64 bit register. Used to store the memory address of the next instruction to execute.
@@ -31,10 +39,10 @@ func (g *GMachine) Run() {
 		i := g.Memory[addr]
 
 		switch i {
-		case 0: //Step 3: Increment the P register (PC) so that it points to the next memory address to read from.
+		case OpHALT: //Step 3: Increment the P register (PC) so that it points to the next memory address to read from.
 			g.P++
 			return
-		case 1:
+		case OpNOOP:
 			//We do nothing and increment the program counter (PC).
 			g.P++
 		}
