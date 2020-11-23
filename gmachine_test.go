@@ -35,7 +35,7 @@ func TestHALT(t *testing.T) {
 
 func TestNOOP(t *testing.T) {
 	g := gmachine.New()
-	g.Memory[0] = 1
+	g.Memory[0] = gmachine.OpNOOP
 	g.Run()
 
 	var wantP uint64 = 2
