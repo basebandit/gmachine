@@ -58,3 +58,14 @@ func TestINCA(t *testing.T) {
 		t.Errorf("want A == %d, got %d", wantA, g.A)
 	}
 }
+
+func TestDECA(t *testing.T) {
+	g := gmachine.New()
+	g.Memory[0] = gmachine.OpDECA
+	g.Run()
+
+	var wantA uint64 = 1
+	if wantA != g.A {
+		t.Errorf("want A == %d, got %d", wantA, g.A)
+	}
+}
