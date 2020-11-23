@@ -17,6 +17,8 @@ const (
 type GMachine struct {
 	//P is a 64 bit register. Used to store the memory address of the next instruction to execute.
 	P uint64
+	//A is a 64 bit register. Used to store results of computations. e.g. addition,subtraction.
+	A uint64
 	//Memory is an array of 64 bit words that represent the memory of a G-Machine.
 	Memory []uint64
 }
