@@ -21,3 +21,17 @@ func New() *GMachine {
 
 	return &gm
 }
+
+//Run executes an instruction on the new G-Machine instance.
+func (g *GMachine) Run() {
+	//Step 1: Fetch the next instruction from Memory. Look at the P register to see what memory address it
+	// contains, and read the instruction at that address.
+	addr := g.P
+	i := g.Memory[addr]
+
+	switch i {
+	case 0: //Step 3: Increment the P register (PC) so that it points to the next memory address to read from.
+		g.P++
+		return
+	}
+}
