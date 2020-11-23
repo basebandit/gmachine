@@ -55,6 +55,10 @@ func (g *GMachine) Run() {
 			//We add one to the value held by A,then increment the program counter.(PC)
 			g.A++
 			g.P++
+		case OpDECA:
+			g.A = 2 //First set the register A to the value 2
+			g.A--   //Then subtract one from the value of A register
+			g.P++   //Then increment Program Counter
 		}
 	}
 }
