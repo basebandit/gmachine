@@ -15,6 +15,8 @@ const (
 	OpINCA = 2
 	//OpDECA subtracts one from.
 	OpDECA = 3
+	//OpSETA operates on an operand.
+	OpSETA = 4
 )
 
 //GMachine is a state-machine representing a virtual CPU.
@@ -59,6 +61,12 @@ func (g *GMachine) Run() {
 			// g.A = 2 //First set the register A to the value 2
 			g.A-- //Then subtract one from the value of A register
 			g.P++ //Then increment Program Counter
+		case OpSETA:
+			//trigger a memory fetch
+			addr := g.P
+			i := g.Memory[addr] //read contents of memory
+			g.A = i             //put the read value into the A register
+			g.P++               //increment Program Counter
 		}
 	}
 }
