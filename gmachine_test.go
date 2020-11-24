@@ -82,3 +82,23 @@ func TestCALC(t *testing.T) {
 		t.Errorf("want A == %d, got %d", wantA, g.A)
 	}
 }
+
+func TestSETA(t *testing.T) {
+	g := gmachine.New()
+	g.Memory[0] = gmachine.OpSETA
+	g.Memory[1] = gmachine.OpHALT
+	g.Run()
+
+	var (
+		wantP uint64 = 2
+		wantA uint64 = 4
+	)
+
+	if wantP != g.P {
+		t.Errorf("want P == %d, got %d", wantP, g.P)
+	}
+
+	if wantA != g.A {
+		t.Errorf("want A == %d, got %d", wantA, g.A)
+	}
+}
