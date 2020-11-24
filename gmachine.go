@@ -56,9 +56,19 @@ func (g *GMachine) Run() {
 			g.A++
 			g.P++
 		case OpDECA:
-			g.A = 2 //First set the register A to the value 2
-			g.A--   //Then subtract one from the value of A register
-			g.P++   //Then increment Program Counter
+			// g.A = 2 //First set the register A to the value 2
+			g.A-- //Then subtract one from the value of A register
+			g.P++ //Then increment Program Counter
 		}
 	}
+}
+
+//Sub subtracts 2 from 3. Sub first increments A three times setting it to value 3. Then decrements A two times resulting to the difference of subtracting 2 from 3.
+func (g *GMachine) Sub() {
+	g.Memory[0] = OpINCA // A = 0+ 1 = 1
+	g.Memory[1] = OpINCA // A = 1 + 1 = 2
+	g.Memory[2] = OpINCA // A = 2 + 1 = 3
+	g.Memory[3] = OpDECA // A = 3 - 1 = 2
+	g.Memory[4] = OpDECA // A = 2 - 1 = 1
+	g.Run()
 }
