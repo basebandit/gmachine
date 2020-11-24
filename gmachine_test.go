@@ -61,8 +61,21 @@ func TestINCA(t *testing.T) {
 
 func TestDECA(t *testing.T) {
 	g := gmachine.New()
-	g.Memory[0] = gmachine.OpDECA
+	g.Memory[0] = gmachine.OpINCA
+	g.Memory[1] = gmachine.OpINCA
+	g.Memory[2] = gmachine.OpDECA
 	g.Run()
+
+	var wantA uint64 = 1
+	if wantA != g.A {
+		t.Errorf("want A == %d, got %d", wantA, g.A)
+	}
+}
+
+//TestCALC calculate the result of subtracting 2 from 3
+func TestCALC(t *testing.T) {
+	g := gmachine.New()
+	g.Sub()
 
 	var wantA uint64 = 1
 	if wantA != g.A {
