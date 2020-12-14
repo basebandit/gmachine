@@ -8,15 +8,15 @@ const DefaultMemSize = 1024
 //G-Machine instruction-set with their respective OPCodes.
 const (
 	//OpHALT stops current execution.
-	OpHALT = 0
+	OpHALT = iota
 	//OpNOOP does nothing.
-	OpNOOP = 1
+	OpNOOP
 	//OpINCA adds one to.
-	OpINCA = 2
+	OpINCA
 	//OpDECA subtracts one from.
-	OpDECA = 3
+	OpDECA
 	//OpSETA operates on an operand.
-	OpSETA = 4
+	OpSETA
 )
 
 //GMachine is a state-machine representing a virtual CPU.
